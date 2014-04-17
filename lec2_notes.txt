@@ -1,0 +1,57 @@
+instances: vector of features (attributes)
+concepts: function: instances --> output (true/false, some discrete set of nubmers, etc)
+target concept: the concept you want
+hypothesis: H
+
+*decision trees: representation; its a way of describing things
+	-its a fn that matches attribute values to the output
+	-nodes represent attributes
+	-edges represent values
+	-leaves represent OUTPUTS
+
+Ex: decision of whether or not to go to restaurant
+Cost: $, $$, $$$$$$
+Health score: Very healthy, i dont know, OK, Bad
+Business: empty, moderate, full
+type: indian, vegetarian, tex-mex, thai, italian
+weather outside: rainy, [note: tihs is NOT an attribute of the resto, but there ARE attributes outside of a restaurant that will help you make a decision]
+hungry: yes, no
+
+
+*ID3 - see CS3600 notes; 
+-uses information gain --> minimizes entropy wrt your label
+
+
+eveyr algo has bias:
+-restriction bias
+-preference bias
+
+*attributes that have high information gain should be near the root of the tree!
+
+correct is better than incorrect
+small trees over large trees --> computation time better
+occam's razor: all other things being equal, the simplest answer is best
+	-ie. you would prefer a small tree thats correct is better than a large tree thats correct
+	-do not add more complexity to your explanation unless you need it to explain your data
+	-this is impt so that you can avoid overfitting --> which is where you are able to expalin your training data completely, but you cannot generalize past that (for other exmaples beyond)
+
+*how can you avoid overfitting with decision trees?
+-pruning: grow the tree, explain data perfectly, and then start backing out
+-start with node, when you get to next node, expand only if you get enough information gain (>70%), otherwise stop expanding and accept the answer that you have
+
+*every algo has an inductive bias -- you have to build in some assumptions, otherwise you cannot generalize:
+	-ie. assume that every book you buy you will read
+
+
+*Intro to Neural networks
+-looks like a decision tree
+-has LOTS of inputs
+-inputs are connected to output node by edges, each of which have a weight
+-you input all the inputs, calculate an "answer" based on the weights, and spit out the answer node
+-you can have MULTIPLE LAYERS
+
+**what is the restriction bias of a NN?
+-depends on how many layers
+--if you have a single node, pass thru perceptron --> linear function
+--if you have multiple nodes/layers --> nonlinear function
+

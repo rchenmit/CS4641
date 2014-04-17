@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\pagestyle{fancy}
+
+\lhead{CS 4641 lecture}
+\chead{Game Theory Day 2}
+\rhead{4/17/2014}
+
+\begin{document}
+%\begin{enumerate}
+%\end{enumerate}
+
+\title{Game Theory}
+
+\section{2-player, zero sum, deterministic game of perfect information}
+
+\subsection{Paper scissors rock}. Strategy: for all uniform moves (rock, paper, scissors), you pick one. 
+
+\subsection{Ex: frisbee}
+disk can land one way or another. 
+
+\section{2 player, non-zero sum, finite games with hidden information}
+
+NOT \textbf{determininstic}, and does NOT have \textbf{perfect} information
+
+
+\subsection{Ex: prisoner dilemma}
+Player A is rows, player B is columms
+
+$
+A  
+\begin{array}{|c|c}
+	B \\
+    \hline
+  -1,-1 & -9,0\\
+  \hline
+  0,-9 & -6,-6
+\end{array}
+$
+
+If player A has to choose, he will choose the SECOND row, via \textbf{maximin} (-6 is bigger than -9). 
+ 
+\section{Nash equilibrium}
+Generalize to $n$ people instead of 2. 
+Player 1 has set of strategies $S_1$, player 2 has set of strats $S_2$, etc. 
+$S_1, S_2, ......S_n$.
+
+$S_1^{\star} \in S_1, S_2^{\star} \in S_2, ... S_n^{\star} \in S_n$
+
+\textbf{Definition}: the strats are in a Nash equlibirium $iff$: 
+
+$\forall_i S_i^{\star} ,  \underset{S_i}{\operatorname{argmax}} = \cup ( \S_1^{\star}, S_2^{\star}, ... S_i^{\star}, ... S_n^{\star} )$ 
+
+Ex: each person closes his eyes. the master chooses one player at random. chosen one can choose to change his strat. but it would be best for hinm if he doesnt choose his strat. Look at the matrix for the prisoner dilemma - at $(-6,-6)$: this IS a N.E.However, $(-1,-1)$ is NOT a N.E. bc, if player A knows that player B is going to cooperate, then if you choose player A, palyer A can then just defect (because player B will not change and player B is going to end up picking column 2 instead of column 1.  So for this prisoner's dilemma, $(-6,-6)$ is the ONLY nash equilibrium. 
+
+\textbf{note:} you CAN have more than one N.E., but that is beyond the scope of this course. 
+
+
+\begin{enumerate}
+\item [\textbf{Properties of NE}]
+\item All NE will survive the remove of strictly dominated strategies. (a strat is stirctly dominated if its always worse than some alternative strat; for example, cooperation is always worse for player A, therefore defect strictly dominates cooperation for player A). 
+\item if you remove all strictly dominated stratgies and you're left with a single answer $\Rightarrow$ then its a NE
+\item if $n$ is finite, $S_i$ finite there exists a NE
+\end{enumerate}
+
+
+
+
+\end{document}
