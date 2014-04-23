@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\pagestyle{fancy}
+
+\lhead{CS 4641 lecture}
+\chead{Game Theory Day 3}
+\rhead{4/22/2014}
+
+\begin{document}
+%\begin{enumerate}
+%\end{enumerate}
+
+\title{20140422-Game Theory 3}
+
+\section{Game Theory 3 - Goat game}
+
+\subsection{Goat game description}You have $n$ farmers; you have $36$ goats.  Every farmer can bring between 0 and 36 goats inclusive, $[0, 36]$. The number of goats that you can bring, is a strategy. 
+
+We assume that $D = \sqrt(36-G)$, where D is the number of dollars you get, and $G$ is the number of goats that you bring. 
+
+We represent the outcome, the number of goats each person brings as:
+
+$(g_1, g_2, ... g_n)$.
+
+Let's presuppose that there is a NE outcome:
+
+$NE (g_1^\star, g_2^\star, ... g_n^\star)$, 
+
+where:
+
+$g_i^\star = \underset{g_i}{\operatorname{argmax}} [g_i \sqrt(36-g_i-G_i^\star)]$
+
+Now, we want to know what will maximize the above equation for $g_i^\star$. To know the optimal value, we TAKE THE DERIVATIVE and SET IT EQUAL TO ZERO:
+
+$0 = \frac{\delta}{\delta g} g_i \sqrt(36-g_i-G_{-i}^\star)$
+
+$g_i^\star = \frac{2}{3}(36-G_{-i}^\star) = 24-\frac{2}{3} G_{-i}^\star$
+\\
+therefore, we set:
+$g^\star = g_1^\star = g_2^\star = ... = g_n^\star$
+
+$g^\star = 24 - \frac{2}{3} (n-1) g^\star$
+
+$= \frac{72}{2n+1}$
+
+Therefore you end up with 
+
+$36-\frac{36}{2n+1}$
+
+\subsubsection{example}
+
+If you just want to maximiaze the \textbf{original equations}: 
+
+Left to their own , devices, this is what will happen if there are $n=24$ goat herders $\rightarrow$ then you end up with 1.26 cents per farmer
+
+But, the NE, if there are $n=24$ goat herders $\rightarrow$ then you end up with 3.46 cents per farmer. 
+
+Note: the OPTIMAL answer is NOT the same as the NE. This is called the \textbf{tragedy of the commons}.
+
+\section{Tragedy of the Commons}
+\subsection{Intro}
+In no situation, would anyone do the "right thing", where the right thing would be to maximize utility for everyone , because its not the same as the optimal for one particular person. Its like a \textbf{Prisoner's Dilemma}. 
+
+
+
+\subsection{Review: prisoner dilemma}
+Player A is rows, player B is columms
+
+$
+A  
+\begin{array}{|c|c}
+	B \\
+    \hline
+  -1,-1 & -9,0\\
+  \hline
+  0,-9 & -6,-6
+\end{array}
+$
+
+If player A has to choose, he will choose the SECOND row, via \textbf{maximin} (-6 is bigger than -9). 
+ 
+
+\subsection{???}
+"Obamacare is the ultimate result of a tragedy of the commons". 
+
+\subsection{PD -- read book/notes for more info!!}
+always cooperate: $\frac{-1}{1-\gamma}$\\
+always defect: $0 + (\frac{-6}{1-\gamma})\gamma$
+
+so, which is better, always defect or always cooperate?if always cooperate is better, than what is the matehmatiacl equation that has to be true?
+
+$\frac{-1}{1-\gamma} > \frac{-6 \gamma}{1-\gamma}$
+$\Rightarrow \frac{-1}{-6} < \gamma$
+$\Rightarrow \gamma > \frac{1}{6}$
+
+\end{document}
